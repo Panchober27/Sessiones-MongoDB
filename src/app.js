@@ -37,12 +37,27 @@ app.use(
   })
 );
 
+// Zona del Rutas, llevarse esto a otro carpeta/archivo...
+
+// Ruta principal...
+
 app.get("/", (req, res) => {
-  req.session.isAuth = true;
-  // console.log(req.session);
-  console.log(req.session.id);
-  res.send("sesiones y cookies :)");
+  res.render("index");
 });
+
+
+
+// app.get("/", (req, res) => {
+//   req.session.isAuth = true;
+//   console.log(req.session);
+//   console.log(req.session.id);
+//   res.send("sesiones y cookies :)");
+// });
+
+
+// Archivos estaticos.
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.listen(port, () => {
   console.log(`On port: ${port}`);

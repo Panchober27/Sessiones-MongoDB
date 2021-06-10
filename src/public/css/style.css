@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+}
+
+.card{
+    width: 19rem;
+    background-color: yellow; 
+}
+
+.card-body {
+    display:inline-block
+}
