@@ -45,7 +45,23 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// Rutas Login.
+app.get("/login", (req, res) => {
+  res.render("login");
+});
 
+app.post("/login", (req, res) => {});
+
+// Rutas de Register.
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+app.post("/register", (req, res) => {});
+
+// Ruta del dashboard
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard");
+});
 
 // app.get("/", (req, res) => {
 //   req.session.isAuth = true;
@@ -54,10 +70,8 @@ app.get("/", (req, res) => {
 //   res.send("sesiones y cookies :)");
 // });
 
-
 // Archivos estaticos.
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(port, () => {
   console.log(`On port: ${port}`);
