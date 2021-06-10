@@ -55,31 +55,26 @@ app.get("/login", (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  
-  const user = await UserModel.findOne({email});
-
+  const user = await UserModel.findOne({ email });
   // Si el usuario no existe se devielve al login.
-  if(!user){
+  if (!user) {
     return res.redirect("/login");
   }
-
   // Si el usuario existe comparo las password para
-  const isMatch = await bcrypt.compare(password,user.password);
-  if(!isMatch){ // La contraseña no es correcta!
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    // La contraseña no es correcta!
     return res.redirect("/login");
   }
   // Si esta todo ok lo enviamos el dashboard.
-  res.redirect('/dashboard');
-
-
-
-
+  res.redirect("/dashboard");
 });
 
 // Rutas de Register.
 app.get("/register", (req, res) => {
   res.render("register");
 });
+
 app.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -89,9 +84,7 @@ app.post("/register", async (req, res) => {
   if (user) {
     return res.redirect("/register");
   }
-
   const hashedPsw = await bcrypt.hash(password, 12);
-
   user = new UserModel({
     username,
     email,
